@@ -14,31 +14,33 @@ export default {
   components: {
     PostList
   },
-  data() {
-    return {
-      loadedPosts: []
-    };
-  },
-  created() {
+  asyncData(context, callback) {
+    console.log("context", context);
     setTimeout(() => {
-      this.loadedPosts = [
-        {
-          id: "1",
-          title: "First Post",
-          previewText: "This is our first post!",
-          thumbnail:
-            "https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg"
-        },
-        {
-          id: "2",
-          title: "Second Post",
-          previewText: "This is our second post!",
-          thumbnail:
-            "https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg"
-        }
-      ];
+      callback(null, {
+        loadedPosts: [
+          {
+            id: "1",
+            title: "First Post",
+            previewText: "This is our first post!",
+            thumbnail:
+              "https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg"
+          },
+          {
+            id: "2",
+            title: "Second Post",
+            previewText: "This is our second post!",
+            thumbnail:
+              "https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg"
+          }
+        ]
+      });
     }, 1500);
-  }
+  },
+  data() {
+    return {};
+  },
+  created() {}
 };
 </script>
 
