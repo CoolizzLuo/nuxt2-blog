@@ -25,17 +25,21 @@ module.exports = {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: "#3B8070" },
+  loading: { color: "#fa923f", height: "4px", duration: 5000 },
+  loadingIndicator: {
+    name: "circle",
+    color: "#fa923f"
+  },
 
   /*
    ** Global CSS
    */
-  css: [],
+  css: ["~assets/styles/main.css"],
 
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ["~plugins/core-components.js"],
 
   /*
    ** Nuxt.js modules
@@ -50,5 +54,14 @@ module.exports = {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  env: {
+    baseUrl:
+      process.env.BASE_URL ||
+      "https://nuxt-blog-34ed4-default-rtdb.asia-southeast1.firebasedatabase.app"
+  },
+  transition: {
+    name: "fade",
+    mode: "out-in"
   }
 };
