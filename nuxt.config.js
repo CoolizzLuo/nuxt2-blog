@@ -39,12 +39,18 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["~plugins/core-components.js"],
+  plugins: ["~plugins/core-components.js", "~plugins/date-filter.js"],
 
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: ["@nuxtjs/axios"],
+  axios: {
+    baseURL:
+      process.env.BASE_URL ||
+      "https://nuxt-blog-34ed4-default-rtdb.asia-southeast1.firebasedatabase.app",
+    credentials: false
+  },
 
   /*
    ** Build configuration

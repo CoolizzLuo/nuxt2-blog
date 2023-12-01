@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import AdminPostForm from "@/components/Admin/AdminPostForm";
 
 export default {
@@ -16,7 +15,7 @@ export default {
     AdminPostForm
   },
   asyncData(context) {
-    return axios
+    return context.app.$axios
       .get(
         `https://nuxt-blog-34ed4-default-rtdb.asia-southeast1.firebasedatabase.app/posts/${context.params.postId}.json`
       )

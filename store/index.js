@@ -1,5 +1,4 @@
 import Vuex from "vuex";
-import axios from "axios";
 
 const createStore = () => {
   return new Vuex.Store({
@@ -22,8 +21,8 @@ const createStore = () => {
     },
     actions: {
       nuxtServerInit(vuexContext, context) {
-        return axios
-          .get(process.env.baseUrl + "/posts.json")
+        return context.app.$axios
+          .get("/posts.json")
           .then(res => {
             const postsArray = [];
             for (const key in res.data) {
@@ -38,11 +37,8 @@ const createStore = () => {
           ...post,
           updatedDate: new Date()
         };
-        return axios
-          .post(
-            "https://nuxt-blog-34ed4-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json",
-            createdPost
-          )
+        return this.$axios
+          .post("/posts.json", createdPost)
           .then(result => {
             vuexContext.commit("addPost", {
               ...createdPost,
@@ -52,13 +48,8 @@ const createStore = () => {
           .catch(e => console.log(e));
       },
       editPost(vuexContext, editedPost) {
-        return axios
-          .put(
-            "https://nuxt-blog-34ed4-default-rtdb.asia-southeast1.firebasedatabase.app/posts/" +
-              editedPost.id +
-              ".json",
-            editedPost
-          )
+        return this.$axios
+          .put("/posts/" + editedPost.id + ".json", editedPost)
           .then(res => {
             vuexContext.commit("editPost", editedPost);
           })
