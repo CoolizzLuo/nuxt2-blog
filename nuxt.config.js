@@ -64,10 +64,14 @@ module.exports = {
   env: {
     baseUrl:
       process.env.BASE_URL ||
-      "https://nuxt-blog-34ed4-default-rtdb.asia-southeast1.firebasedatabase.app"
+      "https://nuxt-blog-34ed4-default-rtdb.asia-southeast1.firebasedatabase.app",
+    fbAPIKey: process.env.FIREBASE_API_KEY
   },
   transition: {
     name: "fade",
     mode: "out-in"
   }
+  // router: {
+  //   middleware: "log"
+  // }
 };
